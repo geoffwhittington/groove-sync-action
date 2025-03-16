@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Sync grooves
-        uses: your-username/groove-sync-action@v1
+        uses: geoffwhittington/groove-sync-action@v1
         with:
           api-url: ${{ secrets.GROOVE_API_URL }}
           user-context-id: ${{ secrets.USER_CONTEXT_ID }}
