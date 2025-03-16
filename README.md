@@ -1,6 +1,6 @@
 # Groove Sync Action
 
-This GitHub Action allows you to sync groove definitions from YAML files with your Groove API endpoint. It supports both creating new grooves and updating existing ones, using the `toolName` as a unique identifier.
+This GitHub Action allows you to sync groove definitions from YAML files with your <https://grooving.xyz> Groove API endpoint. It supports both creating new grooves and updating existing ones, using the `toolName` as a unique identifier.
 
 ## Features
 
