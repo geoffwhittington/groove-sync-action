@@ -18,8 +18,8 @@ name: Sync Grooves
 on:
   push:
     paths:
-      - 'grooves/**/*.yml'
-      - 'grooves/**/*.yaml'
+      - '.grooves/**/*.yml'
+      - '.grooves/**/*.yaml'
   workflow_dispatch:
 
 jobs:
@@ -42,7 +42,7 @@ jobs:
 
 | Input | Description | Required | Default |
 |-------|-------------|----------|---------|
-| `api-url` | Base URL of your Groove API | Yes | - |
+| `api-url` | Base URL of your Groove API | No | `https://grooving.xyz` |
 | `user-context-id` | User context ID with permission to create/update grooves | Yes | - |
 | `grooves-path` | Path to directory containing groove YAML files | No | `.grooves` |
 | `file-pattern` | Glob pattern for groove files | No | `**/*.{yml,yaml}` |
@@ -80,8 +80,8 @@ name: Sync Grooves
 on:
   push:
     paths:
-      - 'grooves/**/*.yml'
-      - 'grooves/**/*.yaml'
+      - '.grooves/**/*.yml'
+      - '.grooves/**/*.yaml'
   workflow_dispatch:
 
 jobs:
@@ -93,7 +93,6 @@ jobs:
       - name: Sync grooves
         uses: your-username/groove-sync-action@v1
         with:
-          api-url: ${{ secrets.GROOVE_API_URL }}
           user-context-id: ${{ secrets.USER_CONTEXT_ID }}
 ```
 
