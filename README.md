@@ -44,7 +44,7 @@ jobs:
 |-------|-------------|----------|---------|
 | `api-url` | Base URL of your Groove API | Yes | - |
 | `user-context-id` | User context ID with permission to create/update grooves | Yes | - |
-| `grooves-path` | Path to directory containing groove YAML files | No | `grooves` |
+| `grooves-path` | Path to directory containing groove YAML files | No | `.grooves` |
 | `file-pattern` | Glob pattern for groove files | No | `**/*.{yml,yaml}` |
 
 ## Groove YAML Format
