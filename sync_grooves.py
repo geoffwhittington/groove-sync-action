@@ -10,7 +10,8 @@ from typing import Dict, Any, Optional
 
 class GrooveSync:
     def __init__(self):
-        self.api_url = os.environ.get('GROOVE_API_URL', 'https://grooving.xyz').rstrip('/')
+        api_url = os.environ.get('GROOVE_API_URL')
+        self.api_url = (api_url if api_url and api_url.strip() else 'https://grooving.xyz').rstrip('/')
         print(f"Debug - API URL: {self.api_url}")
         self.context_id = os.environ['USER_CONTEXT_ID']
         self.grooves_path = os.environ.get('GROOVES_PATH', '.grooves')
