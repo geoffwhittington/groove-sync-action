@@ -11,6 +11,7 @@ from typing import Dict, Any, Optional
 class GrooveSync:
     def __init__(self):
         self.api_url = os.environ.get('GROOVE_API_URL', 'https://grooving.xyz').rstrip('/')
+        print(f"Debug - API URL: {self.api_url}")
         self.context_id = os.environ['USER_CONTEXT_ID']
         self.grooves_path = os.environ.get('GROOVES_PATH', '.grooves')
         self.file_pattern = os.environ.get('FILE_PATTERN', '**/*.{yml,yaml}')
@@ -51,16 +52,19 @@ class GrooveSync:
                 'beats': groove_data.get('beats', [])
             }
             
+            endpoint_url = f"{self.api_url}/api/tools/{self.context_id}"
+            print(f"Debug - Full endpoint URL: {endpoint_url}")
+            
             # Try to update first
             put_response = requests.put(
-                f"{self.api_url}/api/tools/{self.context_id}",
+                endpoint_url,
                 json=request_data
             )
             
             # If groove doesn't exist, create it
             if put_response.status_code == 404:
                 post_response = requests.post(
-                    f"{self.api_url}/api/tools/{self.context_id}",
+                    endpoint_url,
                     json=request_data
                 )
                 
