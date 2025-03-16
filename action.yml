@@ -1,0 +1,44 @@
+name: 'Groove Sync Action'
+description: 'Sync YAML-defined grooves with your Groove API endpoint'
+branding:
+  icon: 'refresh-cw'
+  color: 'blue'
+
+inputs:
+  api-url:
+    description: 'The base URL of your Groove API'
+    required: true
+  user-context-id:
+    description: 'The user context ID that has permission to create/update grooves'
+    required: true
+  grooves-path:
+    description: 'Path to the directory containing groove YAML files'
+    required: false
+    default: '.grooves'
+  file-pattern:
+    description: 'Glob pattern for groove files'
+    required: false
+    default: '**/*.{yml,yaml}'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+        
+    - name: Install dependencies
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml requests
+
+    - name: Run groove sync
+      shell: bash
+      env:
+        GROOVE_API_URL: ${{ inputs.api-url }}
+        USER_CONTEXT_ID: ${{ inputs.user-context-id }}
+        GROOVES_PATH: ${{ inputs.grooves-path }}
+        FILE_PATTERN: ${{ inputs.file-pattern }}
+      run: python ${{ github.action_path }}/sync_grooves.py 

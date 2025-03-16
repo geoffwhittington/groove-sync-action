@@ -1,0 +1,16 @@
+name: Hello World
+description: A simple example groove that generates a greeting
+toolName: hello_world
+
+inputSchema:
+  type: object
+  required:
+    - name
+  properties:
+    name:
+      type: string
+      description: The name to greet
+
+beats:
+  - name: Generate Greeting
+    template: "Hello, {name}! Welcome to our application."
